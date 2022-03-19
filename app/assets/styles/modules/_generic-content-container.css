@@ -1,0 +1,11 @@
+.generic-content-container {
+
+    padding-bottom: 20px;
+    p {
+        line-height: 1.5;
+        margin: 2.5rem 0;
+    }
+    p a {
+        font-weight: 700;
+    }
+}

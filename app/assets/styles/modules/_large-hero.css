@@ -1,0 +1,73 @@
+.large-hero {
+    position: relative;
+    border-bottom: 10px solid #2f5572;
+
+    &__image {
+        display: block;
+    }
+
+    &__text-content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    &__title {
+        font-weight: 300;
+        color: $mainBlue;
+        font-size: 3rem;
+        margin: 0;
+
+        @mixin atSmall {
+            font-size: 3.5rem;
+        }
+        @mixin atMedium {
+            font-size: 4.5rem;
+        }
+        @mixin atLarge {
+            font-size: 5.5rem;
+        }
+    }
+
+    &__subtitle {
+        font-weight: 300;
+        color: $mainBlue;
+        font-size: 5rem;
+        margin: 0;
+
+        @mixin atSmall {
+            font-size: 5rem;
+        }
+        @mixin atMedium {
+            font-size: 6rem;
+        }
+        @mixin atLarge {
+            font-size: 8rem;
+        }
+    }
+
+    &__description {
+        color: #fff;
+        font-size: 3rem;
+        font-weight: 100;
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
+        max-width: 120rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 2rem;
+
+        @mixin atSmall {
+            font-size: 2rem;
+        }
+        @mixin atMedium {
+            font-size: 2.5rem;
+        }
+        @mixin atLarge {
+            font-size: 3rem;
+        }
+    }
+}
+

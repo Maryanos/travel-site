@@ -1,0 +1,31 @@
+.row {
+    @mixin atMedium {
+        display: flex;
+    }
+
+    &__b-margin-until-medium {
+        margin-bottom: 2rem;
+    }
+
+    @mixin atMedium {
+        margin-bottom: 0;
+
+        &__medium-4 {
+            width: 40%;
+        }
+
+        &__medium-8 {
+            width: 60%;
+        }
+
+    }
+
+    &--gutters {
+        margin-right: -50px;
+    }
+    &--gutters > div{
+        padding-right: 50px;
+    }
+
+
+}

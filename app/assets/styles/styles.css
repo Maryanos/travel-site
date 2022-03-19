@@ -11,7 +11,7 @@
 @import "modules/_generic-content-container";
 @import "modules/_section-title";
 @import "modules/_feature-item";
-
-
-
-/*This order really matters so the way we importing the css files should be as above. so variables first then mixins, global then all the elements.*/
+@import "modules/_testimonial";
+@import "modules/_site-footer";
+@import "modules/_site-header";
+@import "modules/_primary-nav";

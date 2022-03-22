@@ -2,6 +2,16 @@
 import '../styles/styles.css'
 import MobileMenu from './modules/MobileMenu'
 import RevealOnScroll from './modules/RevealOnScroll'
+import StickyHeader from './modules/StickyHeader'
+import HighlightedLinks from './modules/HighlightedLinks'
+
+
+//HighlightedLinks
+let highlightedLinks = new HighlightedLinks()
+
+
+//Sticky Header
+let stickyHeader = new StickyHeader()
 
 
 // Reveal On Scroll Functionality

@@ -42,6 +42,7 @@
     top: 30px;
     right: 30px;
     z-index: 10;
+    cursor: pointer;
 
     &::before {
       content: "";
@@ -55,7 +56,7 @@
       transition: all .3s ease-out;
     }
 
-    &__middle {
+    &__bar {
       position: absolute;
       top: 10px;
       left: 0;
@@ -88,7 +89,7 @@
       transform: rotate(40deg) scaleX(1.1);
     }
 
-    .site-header__menu-icon__middle {
+    .site-header__menu-icon__bar {
       opacity: .3;
       transform: scaleX(0) translateX(-5px);
     }

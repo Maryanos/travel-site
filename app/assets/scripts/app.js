@@ -9,11 +9,10 @@ import HighlightedLinks from './modules/HighlightedLinks'
 
 //HighlightedLinks
 new HighlightedLinks()
-
+alert("test")
 
 //Sticky Header
 new StickyHeader()
-
 
 // Reveal On Scroll Functionality
 new RevealOnScroll(document.querySelectorAll(".feature-item"), 85)

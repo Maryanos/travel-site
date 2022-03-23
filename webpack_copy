@@ -1,0 +1,69 @@
+const currentTask = process.env.npm_lifecycle_event //Our current task will equal eather 'build' or'dev'
+const path = require('path')   //Importing manually Node.js path package (part of node library so don't ned to be installed)
+const { CleanWebpackPlugin } = require('clean-webpack-plugin') // adding the plugin which will help to generate always fresh bundled files
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')  //extracting css from bundled js file
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+
+const postCSSPlugins = [
+    require('postcss-import'),
+    require('postcss-mixins'),
+    require('postcss-simple-vars'),
+    require('postcss-nested'),
+    require('autoprefixer')
+]
+
+
+let cssConfig = {
+    test: /\.css$/i,  //if the file is ending .css
+    use: ['css-loader?url=false', { loader: 'postcss-loader', options: { postcssOptions: { plugins: postCSSPlugins } } }]
+}
+
+let config = {
+    entry: './app/assets/scripts/App.js',
+    module: {
+        rules: [
+            cssConfig
+        ]
+    }
+}
+
+if (currentTask == 'dev') {
+    cssConfig.use.unshift('style-loader')
+    config.output = {
+        filename: 'bundled.js',
+        path: path.resolve(__dirname, 'app')
+    }
+    config.devServer = {
+        before: function (app, server) {
+            server._watch('./app/**/*.html')   //'**' any subfolder; '*.html' any file that ends .html*/
+        },
+        contentBase: path.join(__dirname, 'app'),
+        hot: true,   //Injecting JSS and CSS to the browser memory on the fly
+        port: 3000,
+        host: '0.0.0.0'
+    }
+    config.mode = 'development'  //adressing/fixing yellow terminal warning
+}
+
+if (currentTask == 'build') {
+    cssConfig.use.unshift(MiniCssExtractPlugin.loader)
+    config.output = {
+        filename: '[name].[chunkhash].js',
+        chunkFilename: '[name].[chunkhash].js',
+        path: path.resolve(__dirname, 'dist')
+    }
+    config.mode = 'production'
+    config.optimization = {
+        splitChunks: { chunks: 'all' },
+        minimize: true,
+        minimizer: [`...`, new CssMinimizerPlugin()]
+    }
+    config.plugins = [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: 'styles.[chunkhash].css' })]
+}
+
+
+
+// 'css-loader' bundling the styles and 'style-loader' applies the styles to the browser.
+
+
+module.exports = config   //exports equal to the config we have created above

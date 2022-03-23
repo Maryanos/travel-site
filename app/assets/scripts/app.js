@@ -9,7 +9,6 @@ import HighlightedLinks from './modules/HighlightedLinks'
 
 //HighlightedLinks
 new HighlightedLinks()
-alert("test")
 
 //Sticky Header
 new StickyHeader()

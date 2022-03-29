@@ -51,6 +51,8 @@ let config = {
   }
 }
 
+
+
 if (currentTask == 'dev') {
   cssConfig.use.unshift('style-loader')
   config.output = {
@@ -58,16 +60,17 @@ if (currentTask == 'dev') {
     path: path.resolve(__dirname, 'app')
   }
   config.devServer = {
-    before: function(app, server) {
-      server._watch('./app/**/*.html')
+    static: {
+      directory: path.join(__dirname, 'app')
     },
-    contentBase: path.join(__dirname, 'app'),
     hot: true,
     port: 3000,
     host: '0.0.0.0'
   }
   config.mode = 'development'
 }
+
+
 
 if (currentTask == 'build') {
   config.module.rules.push({
@@ -96,7 +99,7 @@ if (currentTask == 'build') {
   config.plugins.push(
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({filename: 'styles.[chunkhash].css'}),
-    new RunAfterCompile()  
+    new RunAfterCompile()
   )
 }
 

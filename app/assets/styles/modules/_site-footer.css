@@ -1,37 +1,8 @@
 .site-footer {
   background-color: $mainBlue;
   color: #FFF;
-  padding: .5rem;
+  padding: .5rem 0;
   text-align: center;
-
-
-  & .wrapper {
-    display: flex;
-    flex-direction: column;
-
-    @mixin atMedium {
-      & {
-        flex-direction: row;
-        justify-content: center ;
-      }
-    }
-  }
-
-
-  &__back-to-top {
-    position: absolute;
-    right: 50px;
-    padding-bottom: 10px;
-    text-decoration: none;
-    font-size: 30px;
-    transform: rotate(-90deg) scaleY(-1.5);
-    color: white;
-
-    &:hover {
-      color: $mainOrange;
-    }
-  }
-
 
   &__text {
     display: block;
@@ -45,5 +16,3 @@
     }
   }
 }
-
-
